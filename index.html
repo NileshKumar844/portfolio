@@ -1,50 +1,525 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nilesh Kumar — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Epilogue:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <header>
-        <h1 class="logo">Nilesh</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <section id="home" class="hero">
-        <h2>Welcome to My Portfolio</h2>
-        <p>CODER | Developer</p>
-        <a href="#projects" class="btn">View Projects</a>
-    </section>
-    
-    <section id="about" class="about">
-        <h2>About Me</h2>
-        <p>I am a BCA student at Galgotias university I am a passionate designer and developer with expertise in creating stunning websites.</p>
-    </section>
-    
-    <section id="projects" class="projects">
-        <h2>My Projects</h2>
-        <div class="project-card">Portfolio</div>
-        <div class="project-card">Web Page</div>
-        <div class="project-card">Quiz Game</div>
-    </section>
-    
-    <section id="contact" class="contact">
-        <h2>Contact Me</h2>
-        <p>Email: example@email.com</p>
-    </section>
-    
-    <footer>
-        <p>&copy; 2025 My Portfolio</p>
-    </footer>
+
+<!-- ────────────────── LOADER ────────────────── -->
+<div id="loader">
+  <div class="loader-inner">
+    <div class="loader-logo">NK</div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+    <span class="loader-text">Initializing...</span>
+  </div>
+</div>
+
+<!-- ────────────────── CUSTOM CURSOR ────────────────── -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ────────────────── NAVBAR ────────────────── -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <span class="logo-bracket">&lt;</span>NK<span class="logo-bracket">/&gt;</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#education" class="nav-link">Education</a></li>
+      <li><a href="#achievements" class="nav-link">Achievements</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fa-solid fa-sun" id="themeIcon"></i>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ────────────────── HERO ────────────────── -->
+<section id="hero">
+  <canvas id="particleCanvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Available for opportunities
+    </div>
+    <h1 class="hero-name">
+      <span class="name-line">Nilesh</span>
+      <span class="name-line accent-line">Kumar</span>
+    </h1>
+    <div class="hero-role">
+      <span class="role-prefix">—&nbsp;</span>
+      <span class="typewriter" id="typewriter"></span>
+      <span class="cursor-blink">|</span>
+    </div>
+    <p class="hero-tagline">
+      Crafting code that solves real problems. BCA student turning logic into<br class="br-desktop"/> experience — one project at a time.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">
+        <i class="fa-solid fa-folder-open"></i> View Projects
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">4+</span><span class="stat-label">Projects</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">3+</span><span class="stat-label">Languages</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">2nd</span><span class="stat-label">Year BCA</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ────────────────── ABOUT ────────────────── -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">01 / About</div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <h2 class="section-title">Who I Am</h2>
+        <p>
+          I'm <strong>Nilesh Kumar</strong>, a 2nd-year BCA student with a deep passion for building 
+          software that actually works. My journey started with curiosity about how computers think — 
+          and quickly turned into a love for writing clean, logical code.
+        </p>
+        <p>
+          I specialize in <span class="highlight">Web Development</span>, 
+          <span class="highlight">Data Structures & Algorithms</span>, and 
+          <span class="highlight">Database Management Systems</span>. I believe every problem 
+          has an elegant solution — you just need to find the right structure for it.
+        </p>
+        <p>
+          When I'm not coding, I'm exploring new algorithms, contributing to open-source projects, 
+          or sharpening my problem-solving skills on competitive platforms like LeetCode and HackerRank.
+        </p>
+        <div class="about-tags">
+          <span class="tag">Web Dev</span>
+          <span class="tag">DSA</span>
+          <span class="tag">DBMS</span>
+          <span class="tag">OOP</span>
+          <span class="tag">Problem Solver</span>
+          <span class="tag">Open Source</span>
+        </div>
+      </div>
+      <div class="about-card-wrap reveal">
+        <div class="about-card glass">
+          <div class="card-avatar">
+            <div class="avatar-ring"></div>
+            <div class="avatar-inner">NK</div>
+          </div>
+          <div class="card-info">
+            <div class="info-row"><i class="fa-solid fa-graduation-cap"></i><span>BCA — 2023–2026</span></div>
+            <div class="info-row"><i class="fa-solid fa-location-dot"></i><span>India</span></div>
+            <div class="info-row"><i class="fa-solid fa-code"></i><span>Full-Stack Learner</span></div>
+            <div class="info-row"><i class="fa-solid fa-trophy"></i><span>Competitive Coder</span></div>
+          </div>
+          <div class="card-profiles">
+            <a href="#" class="profile-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="profile-link" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#" class="profile-link" title="LeetCode"><i class="fa-solid fa-code"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────── SKILLS ────────────────── -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">02 / Skills</div>
+    <h2 class="section-title reveal">Tech Stack</h2>
+    <p class="section-sub reveal">Languages, frameworks, and tools I work with.</p>
+    <div class="skills-grid">
+
+      <div class="skill-category reveal glass">
+        <div class="skill-cat-header">
+          <i class="fa-solid fa-terminal cat-icon"></i>
+          <h3>Programming Languages</h3>
+        </div>
+        <div class="skill-bars">
+          <div class="skill-item" data-pct="80">
+            <div class="skill-meta"><span>C</span><span class="skill-pct">80%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="--w:80%"></div></div>
+          </div>
+          <div class="skill-item" data-pct="75">
+            <div class="skill-meta"><span>C++</span><span class="skill-pct">75%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="--w:75%"></div></div>
+          </div>
+          <div class="skill-item" data-pct="70">
+            <div class="skill-meta"><span>Python</span><span class="skill-pct">70%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="--w:70%"></div></div>
+          </div>
+          <div class="skill-item" data-pct="72">
+            <div class="skill-meta"><span>JavaScript</span><span class="skill-pct">72%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="--w:72%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-category reveal glass">
+        <div class="skill-cat-header">
+          <i class="fa-solid fa-globe cat-icon"></i>
+          <h3>Web Technologies</h3>
+        </div>
+        <div class="skill-chips">
+          <span class="chip chip-html"><i class="fa-brands fa-html5"></i> HTML5</span>
+          <span class="chip chip-css"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+          <span class="chip chip-js"><i class="fa-brands fa-js"></i> JavaScript</span>
+          <span class="chip chip-flask"><i class="fa-solid fa-flask"></i> Flask</span>
+          <span class="chip chip-sql"><i class="fa-solid fa-database"></i> SQL</span>
+        </div>
+      </div>
+
+      <div class="skill-category reveal glass">
+        <div class="skill-cat-header">
+          <i class="fa-solid fa-brain cat-icon"></i>
+          <h3>Core Subjects</h3>
+        </div>
+        <div class="skill-chips">
+          <span class="chip"><i class="fa-solid fa-sitemap"></i> DSA</span>
+          <span class="chip"><i class="fa-solid fa-database"></i> DBMS</span>
+          <span class="chip"><i class="fa-solid fa-cubes"></i> OOP</span>
+          <span class="chip"><i class="fa-solid fa-network-wired"></i> OS</span>
+        </div>
+      </div>
+
+      <div class="skill-category reveal glass">
+        <div class="skill-cat-header">
+          <i class="fa-solid fa-toolbox cat-icon"></i>
+          <h3>Tools & Platforms</h3>
+        </div>
+        <div class="skill-chips">
+          <span class="chip chip-git"><i class="fa-brands fa-git-alt"></i> Git</span>
+          <span class="chip chip-github"><i class="fa-brands fa-github"></i> GitHub</span>
+          <span class="chip"><i class="fa-solid fa-code"></i> VS Code</span>
+          <span class="chip"><i class="fa-solid fa-terminal"></i> Linux</span>
+          <span class="chip"><i class="fa-solid fa-bug"></i> GDB</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────── PROJECTS ────────────────── -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">03 / Projects</div>
+    <h2 class="section-title reveal">Things I've Built</h2>
+    <p class="section-sub reveal">A collection of projects spanning systems programming, web development, and algorithms.</p>
+
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="cpp">C++</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <button class="filter-btn" data-filter="python">Python</button>
+      <button class="filter-btn" data-filter="dbms">DBMS</button>
+    </div>
+
+    <div class="projects-grid" id="projectsGrid">
+
+      <div class="project-card reveal glass" data-tags="cpp dsa">
+        <div class="project-top">
+          <div class="project-icon"><i class="fa-solid fa-school"></i></div>
+        </div>
+        <h3 class="project-title">School Management System</h3>
+        <p class="project-desc">A C++ console application for managing students, teachers, and records. Implements <strong>Linked Lists</strong> for dynamic storage and <strong>BST</strong> for fast lookups — core DSA applied to real-world problems.</p>
+        <div class="project-stack">
+          <span class="stack-tag">C++</span>
+          <span class="stack-tag">Linked List</span>
+          <span class="stack-tag">BST</span>
+          <span class="stack-tag">OOP</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal glass" data-tags="web">
+        <div class="project-top">
+          <div class="project-icon"><i class="fa-solid fa-user-astronaut"></i></div>
+        </div>
+        <h3 class="project-title">Portfolio Website</h3>
+        <p class="project-desc">This portfolio — built with vanilla HTML, CSS, and JavaScript. Features particle animations, glassmorphism UI, typewriter effects, and a Flask-powered contact backend. Mobile-first, fully responsive.</p>
+        <div class="project-stack">
+          <span class="stack-tag">HTML</span>
+          <span class="stack-tag">CSS</span>
+          <span class="stack-tag">JavaScript</span>
+          <span class="stack-tag">Flask</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal glass" data-tags="dbms python">
+        <div class="project-top">
+          <div class="project-icon"><i class="fa-solid fa-database"></i></div>
+        </div>
+        <h3 class="project-title">DBMS Student System</h3>
+        <p class="project-desc">A complete student database management system built with Python and SQLite. Supports full CRUD operations, grade tracking, attendance management, and generates PDF report cards.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">SQLite</span>
+          <span class="stack-tag">DBMS</span>
+          <span class="stack-tag">SQL</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal glass featured-card" data-tags="web dsa">
+        <div class="featured-badge">Featured</div>
+        <div class="project-top">
+          <div class="project-icon"><i class="fa-solid fa-chart-bar"></i></div>
+        </div>
+        <h3 class="project-title">DSA Visualizer</h3>
+        <p class="project-desc">An interactive web app that visually demonstrates how sorting algorithms, graph traversals, and data structures work in real time. Built to make learning algorithms intuitive and fun.</p>
+        <div class="project-stack">
+          <span class="stack-tag">JavaScript</span>
+          <span class="stack-tag">HTML Canvas</span>
+          <span class="stack-tag">CSS Animations</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal glass" data-tags="web python">
+        <div class="project-top">
+          <div class="project-icon"><i class="fa-solid fa-list-check"></i></div>
+        </div>
+        <h3 class="project-title">Task Manager App</h3>
+        <p class="project-desc">A full-stack task management web app using Flask and SQLite. Features user authentication, priority tagging, due date reminders, and a clean dashboard to track progress.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Flask</span>
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">SQLite</span>
+          <span class="stack-tag">HTML/CSS</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal glass" data-tags="cpp">
+        <div class="project-top">
+          <div class="project-icon"><i class="fa-solid fa-gamepad"></i></div>
+        </div>
+        <h3 class="project-title">Console Snake Game</h3>
+        <p class="project-desc">A classic Snake game built in C++ for the terminal. Uses matrix-based rendering, real-time keyboard input handling, and linked list for the snake body. Clean and addictive.</p>
+        <div class="project-stack">
+          <span class="stack-tag">C++</span>
+          <span class="stack-tag">Linked List</span>
+          <span class="stack-tag">Game Logic</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────── EDUCATION ────────────────── -->
+<section id="education">
+  <div class="container">
+    <div class="section-label">04 / Education</div>
+    <h2 class="section-title reveal">Academic Path</h2>
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content glass">
+          <div class="tl-header">
+            <div class="tl-icon"><i class="fa-solid fa-university"></i></div>
+            <div>
+              <h3>Bachelor of Computer Applications (BCA)</h3>
+              <span class="tl-org">University / College Name</span>
+            </div>
+          </div>
+          <div class="tl-meta">
+            <span class="tl-year"><i class="fa-regular fa-calendar"></i> 2023 – 2026</span>
+            <span class="tl-status active-status">Currently Enrolled</span>
+          </div>
+          <p class="tl-desc">Studying core computer science subjects including Data Structures, Algorithms, DBMS, Object-Oriented Programming, Operating Systems, and Computer Networks. Focusing on practical application through projects.</p>
+          <div class="tl-subjects">
+            <span class="subj-tag">DSA</span>
+            <span class="subj-tag">DBMS</span>
+            <span class="subj-tag">OOP</span>
+            <span class="subj-tag">OS</span>
+            <span class="subj-tag">Math</span>
+            <span class="subj-tag">Web Dev</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content glass">
+          <div class="tl-header">
+            <div class="tl-icon"><i class="fa-solid fa-school"></i></div>
+            <div>
+              <h3>Higher Secondary (12th Grade)</h3>
+              <span class="tl-org">School Name, Board</span>
+            </div>
+          </div>
+          <div class="tl-meta">
+            <span class="tl-year"><i class="fa-regular fa-calendar"></i> Completed 2023</span>
+            <span class="tl-status">Completed</span>
+          </div>
+          <p class="tl-desc">Science stream with Mathematics and Computer Science. Developed a foundational understanding of programming and mathematical reasoning that drives my current work.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────── ACHIEVEMENTS ────────────────── -->
+<section id="achievements">
+  <div class="container">
+    <div class="section-label">05 / Recognition</div>
+    <h2 class="section-title reveal">Achievements & Certs</h2>
+    <div class="ach-grid">
+
+      <div class="ach-card reveal glass">
+        <div class="ach-icon cert-icon"><i class="fa-solid fa-certificate"></i></div>
+        <h4>Python for Everybody</h4>
+        <p>Coursera / University of Michigan</p>
+        <span class="ach-year">2024</span>
+      </div>
+
+      <div class="ach-card reveal glass">
+        <div class="ach-icon cert-icon"><i class="fa-solid fa-award"></i></div>
+        <h4>DSA with C++ Specialization</h4>
+        <p>Pregrad</p>
+        <span class="ach-year">2023</span>
+      </div>
+
+      <div class="ach-card reveal glass">
+        <div class="ach-icon trophy-icon"><i class="fa-solid fa-trophy"></i></div>
+        <h4>Hackathon Participant</h4>
+        <p>College Techfest 2024</p>
+        <span class="ach-year">2024</span>
+      </div>
+
+      <div class="ach-card reveal glass">
+        <div class="ach-icon cert-icon"><i class="fa-brands fa-github"></i></div>
+        <h4>Git & GitHub Essentials</h4>
+        <p>GitHub Learning Lab</p>
+        <span class="ach-year">2023</span>
+      </div>
+
+      <div class="ach-card reveal glass">
+        <div class="ach-icon cert-icon"><i class="fa-solid fa-database"></i></div>
+        <h4>SQL Basics Certificate</h4>
+        <p>HackerRank</p>
+        <span class="ach-year">2024</span>
+      </div>
+
+    </div>
+
+    <!-- Coding Profiles -->
+    <div class="profiles-section reveal">
+      <h3 class="profiles-title">Coding Profiles</h3>
+      <div class="profiles-row">
+        <a href="#" class="profile-card glass" target="_blank">
+          <i class="fa-brands fa-github profile-card-icon"></i>
+          <div>
+            <span class="prof-name">GitHub</span>
+            <span class="prof-handle">@nileshkumar</span>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square prof-arrow"></i>
+        </a>
+        <a href="#" class="profile-card glass" target="_blank">
+          <i class="fa-brands fa-hackerrank profile-card-icon"></i>
+          <div>
+            <span class="prof-name">HackerRank</span>
+            <span class="prof-handle">@nileshkumar</span>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square prof-arrow"></i>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ────────────────── CONTACT ────────────────── -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">06 / Contact</div>
+    <h2 class="section-title reveal">Let's Connect</h2>
+    <p class="section-sub reveal">Have a project, opportunity, or just want to talk tech? Drop a message.</p>
+    <div class="contact-grid">
+
+      <div class="contact-info reveal">
+        <div class="contact-item glass">
+          <i class="fa-solid fa-envelope"></i>
+          <div>
+            <span class="ci-label">Email</span>
+            <span class="ci-val">nilesh10600@gmail.com</span>
+          </div>
+        </div>
+        <div class="contact-item glass">
+          <i class="fa-solid fa-location-dot"></i>
+          <div>
+            <span class="ci-label">Location</span>
+            <span class="ci-val">India</span>
+          </div>
+        </div>
+        <div class="contact-social">
+          <a href="#" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/nilesh-kumar-b927a736b" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          
+          <a href="#" class="social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <form class="contact-form glass reveal" id="contactForm" action="/contact" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="off"/>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="off"/>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="What's on your mind?" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary submit-btn">
+          <span class="btn-text"><i class="fa-solid fa-paper-plane"></i> Send Message</span>
+          <span class="btn-sending" style="display:none"><i class="fa-solid fa-circle-notch fa-spin"></i> Sending...</span>
+        </button>
+        <div class="form-message" id="formMessage"></div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────── FOOTER ────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo"><span class="logo-bracket">&lt;</span>NK<span class="logo-bracket">/&gt;</span></span>
+    <p>Designed & Built by <strong>Nilesh Kumar</strong> · 2024</p>
+    <p class="footer-sub">BCA Student · Aspiring Software Developer</p>
+  </div>
+</footer>
+
+<!-- ────────────────── SCROLL TO TOP ────────────────── -->
+<button id="scrollTop" aria-label="Scroll to top">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<script src="script.js"></script>
 </body>
 </html>
